@@ -1,0 +1,36 @@
+<div class="row d-flex justify-content-center">
+  <h1 class="display-4 text-center">Add a task to do</h1>
+  <div class="col-6">
+    <form #addTodoForm="ngForm">
+      <div class="form-group">
+        <label for="">Name:</label>
+        <input class="form-control m-1" type="text" name="todoName"
+        [(ngModel)]="todo.todoName"
+        required>
+      </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea class="form-control m-1" name="description"
+        [(ngModel)]="todo.description"
+        required>
+        </textarea>
+        <div class="form-group">
+          <label for="image">image URL:</label>
+          <input class="form-control m-1" type="text" name="image"
+          [(ngModel)]="todo.image"
+          required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="status">Status:</label>
+        <select class="form-control m-1" name="todoStatus"
+        [(ngModel)]="todo.todoStatus"
+        required>
+          <option [ngValue]="true">In progress</option>
+          <option [ngValue]="false">Done</option>
+        </select>
+      </div>
+      <button (click)="onSubmit()" [disabled]="!addTodoForm.form.valid" type="submit" class="btn btn-success mt-3 ms-1">Add</button>
+    </form>
+  </div>
+</div>
