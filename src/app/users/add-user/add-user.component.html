@@ -1,0 +1,58 @@
+<div class="row d-flex justify-content-center">
+  <h1 class="display-4 text-center">Add user</h1>
+  <div class="col-6">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <h3>Infos</h3>
+      <div class="form-group">
+        <label for="userFirstName">Firstname:</label>
+        <input class="form-control m-1" type="text" name="userFirstName" formControlName="firstname">
+      </div>
+      <div class="form-group">
+        <label for="userLastName">Lastname:</label>
+        <input class="form-control m-1" type="text" name="userLastName" formControlName="lastname">
+      </div>
+      <div class="form-group">
+        <label for="userEmail">Email:</label>
+        <input class="form-control m-1" type="email" name="userEmail" formControlName="email">
+      </div>
+      <div class="form-group" formArrayName="aliases">
+        <button type="button" class="btn btn-success" (click)="addAliases()">Add alias</button>
+        <div *ngFor="let alias of getAliases().controls; let i = index">
+          <input class="form-control m-1" type="text" [formControlName]=i>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="userBirthDate">Birth date:</label>
+        <input class="form-control m-1" type="date" name="userBirthDate" formControlName="dateBirth">
+      </div>
+      <div class="form-group">
+        <label for="userDescription">Description:</label>
+        <textarea class="form-control m-1" name="userDescription" formControlName="description"></textarea>
+      </div>
+      <div class="form-group" formGroupName="address">
+        <h3 class="mt-3">Address</h3>
+        <div class="d-flex">
+          <div class="form-group flex-fill me-2">
+            <label for="userStreet">Street:</label>
+            <input class="form-control m-1" type="text" name="userStreet" formControlName="street">
+          </div>
+          <div class="form-group flex-fill">
+            <label for="userCity">City:</label>
+            <input class="form-control m-1" type="text" name="userCity" formControlName="city">
+          </div>
+        </div>
+        <div class="d-flex">
+          <div class="form-group flex-fill me-2">
+            <label for="userState">State:</label>
+            <input class="form-control m-1" type="text" name="userState" formControlName="state">
+          </div>
+          <div class="form-group flex-fill">
+            <label for="userZip">Zip:</label>
+            <input class="form-control m-1" type="number" name="userZip" formControlName="zip">
+          </div>
+        </div>
+      </div>
+      <button type="submit" [disabled]="userForm.invalid" class="btn btn-success mt-3 ms-1">Add</button>
+    </form>
+  </div>
+</div>
